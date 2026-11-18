@@ -1,9 +1,12 @@
 extends CanvasLayer
 
+
 # REFERÊNCIAS À INTERFACE
 @onready var panel: Control = $DialoguePanel
 @onready var speaker_label: Label = $"DialoguePanel/MarginContainer/VBox Container/Speaker Label"
 @onready var dialogue_text: Label = $"DialoguePanel/MarginContainer/VBox Container/Dialog Text"
+
+
 
 # OBJETO PRÓXIMO DO JOGADOR
 var current_interactable: Interactable = null
@@ -17,6 +20,8 @@ var dialogue_index: int = 0
 var dialogue_active: bool = false
 # AÇÃO DE INTERAÇÃO
 const ACTION_INTERACT := &"interagir"
+
+signal dialogue_finished
 
 # ------------------------------------------------------------------------------
 # INICIALIZAÇÃO
@@ -129,7 +134,7 @@ func end_dialogue() -> void:
 	current_speaker = ""
 	dialogue_index = 0
 	current_player = null
-
+	dialogue_finished.emit()
 # ------------------------------------------------------------------------------
 # VERIFICA SE EXISTE UMA CONVERSA ATIVA
 func is_dialogue_active() -> bool:

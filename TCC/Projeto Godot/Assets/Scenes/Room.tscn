@@ -31,8 +31,17 @@
 [ext_resource type="Script" uid="uid://bfgnro646q0uc" path="res://Assets/Scripts/Camera2D.gd" id="30_da6ve"]
 [ext_resource type="PackedScene" uid="uid://c1vd456q8jd3n" path="res://Assets/Scenes/pathway.tscn" id="32_2j33l"]
 [ext_resource type="Script" uid="uid://bkg1meulxw03h" path="res://Assets/Scenes/pathway.gd" id="33_ar2ct"]
+[ext_resource type="Texture2D" uid="uid://cwir27l3tok5" path="res://Assets/AnimacaoMae/porta_mae_v3_frame_1.png" id="34_1rxbo"]
 [ext_resource type="Texture2D" uid="uid://c34g5lsul7o2i" path="res://Assets/Raw Sprites/House/chao.png" id="34_chao"]
+[ext_resource type="Texture2D" uid="uid://dm4t4p6noffpo" path="res://Assets/AnimacaoMae/porta_mae_v3_frame_2.png" id="35_4o0qc"]
 [ext_resource type="Script" uid="uid://d3ersle61m31l" path="res://Assets/Scripts/levels.gd" id="35_levels"]
+[ext_resource type="Texture2D" uid="uid://egwg8dn62s7q" path="res://Assets/AnimacaoMae/porta_mae_v3_frame_3.png" id="36_kshq4"]
+[ext_resource type="Texture2D" uid="uid://cq2lq2llnv4ne" path="res://Assets/AnimacaoMae/porta_mae_v3_frame_4.png" id="37_th8he"]
+[ext_resource type="Texture2D" uid="uid://bp4aevx65i6s1" path="res://Assets/AnimacaoMae/porta_mae_v3_frame_5.png" id="38_7kqlg"]
+[ext_resource type="Texture2D" uid="uid://dxibg78ysb7as" path="res://Assets/AnimacaoMae/porta_mae_v3_frame_6.png" id="39_ociog"]
+[ext_resource type="Texture2D" uid="uid://dy4q604meughu" path="res://Assets/AnimacaoMae/porta_mae_v3_frame_7.png" id="40_mqgu6"]
+[ext_resource type="Texture2D" uid="uid://dqf6hlo13mgfc" path="res://Assets/AnimacaoMae/porta_mae_v3_frame_8.png" id="41_r5t31"]
+[ext_resource type="Script" uid="uid://dkgjugglxuoic" path="res://Assets/Scripts/CutsceneScript.gd" id="42_bahnw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ten4y"]
 size = Vector2(62, 92)
@@ -249,6 +258,43 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_300ud"]
 size = Vector2(46, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qfry7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_1rxbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_4o0qc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_kshq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_th8he")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_7kqlg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ociog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_mqgu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_r5t31")
+}],
+"loop": 0,
+"name": &"StartAnimation",
+"speed": 15.0
+}]
+
+[sub_resource type="Resource" id="Resource_qfry7"]
+script = ExtResource("18_7p0os")
+lines = Array[String](["Mãe: Você está bem, Lucy?", "Lucy: ...", "Lucy: Poderia não ligar as luzes assim repentinamente? ", "Lucy: Eu já falei que...", "Mãe: Lucy, para de drama! Vê se organiza e sai desse quarto! Aqui está uma bagunça!", "Mãe : Hoje é o seu aniversário, e você sabe  que nos sempre comemoramos com a festa!", "Mãe: Toda a família já está aqui, e o único que não está lá é o próprio aniversariante.", "Mãe: Eu já tinha te falado mais cedo para sair desse quarto, mas você voltou de novo", "Lucy: Mas eu já tinha falado que não era necessário fazer essa festa...", "Mãe: Mas eu já fiz, e foi por você!", "Mãe: Recentemente você tem agido assim, sempre ficando no quarto e nunca saindo, parece que você nem gosta mais de comemorar seu aniversário! ", "Mãe: Va comemorar seu aniversário com sua família.", "Lucy...", "Lucy: Tudo bem...", "Mãe: Bom! Vê se você se alegra um pouco.", "Lucy: ..."])
+metadata/_custom_type_script = "uid://cy34ykfuwqx4f"
 
 [node name="Room" type="Node2D" unique_id=2125208278]
 script = ExtResource("35_levels")
@@ -519,7 +565,7 @@ position = Vector2(54, 53)
 [node name="Player" type="CharacterBody2D" parent="Player" unique_id=117201474]
 physics_interpolation_mode = 1
 z_index = 2
-position = Vector2(167.00002, 313)
+position = Vector2(138, 472)
 scale = Vector2(2.2, 2.2)
 collision_mask = 2
 floor_constant_speed = true
@@ -556,9 +602,9 @@ walk_animations = null
 idle_animations = null
 idle_fallback_frame = null
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1559908054 node_paths=PackedStringArray("player")]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1559908054]
 physics_interpolation_mode = 1
-position = Vector2(167, 313)
+position = Vector2(211, 287)
 zoom = Vector2(4, 3.685)
 process_callback = 0
 limit_left = 0
@@ -566,8 +612,6 @@ limit_top = 169
 limit_right = 384
 limit_bottom = 363
 position_smoothing_enabled = true
-script = ExtResource("30_da6ve")
-player = NodePath("../Player")
 
 [node name="Transicao" type="Node" parent="." unique_id=1706173464]
 
@@ -586,6 +630,22 @@ position = Vector2(345, 273)
 
 [node name="StartupPos" type="Marker2D" parent="." unique_id=1125893722]
 position = Vector2(167, 313)
+
+[node name="CutscenePlayer" type="AnimatedSprite2D" parent="." unique_id=165558921 node_paths=PackedStringArray("target_node", "teleport_node", "node_to_hide")]
+position = Vector2(192, 265.5)
+scale = Vector2(0.25098038, 0.25294885)
+sprite_frames = SubResource("SpriteFrames_qfry7")
+animation = &"StartAnimation"
+autoplay = "StartAnimation"
+frame = 7
+frame_progress = 1.0
+script = ExtResource("42_bahnw")
+dialogue_data = SubResource("Resource_qfry7")
+target_node = NodePath("../Player/Camera2D")
+script_to_attach = ExtResource("30_da6ve")
+teleport_node = NodePath("../Player/Player")
+teleport_position = Vector2(120, 320)
+node_to_hide = NodePath(".")
 
 [connection signal="body_entered" from="Transicao/pathway" to="Transicao/pathway" method="_on_body_entered"]
 

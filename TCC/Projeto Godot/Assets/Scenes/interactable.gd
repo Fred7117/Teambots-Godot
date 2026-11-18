@@ -1,5 +1,4 @@
 extends Node2D
-class_name DialogueInteractable
 
 @export var dialogue_data: DialogueData
 @export var interaction_area: Area2D
